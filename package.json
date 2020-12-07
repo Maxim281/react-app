@@ -31,9 +31,12 @@
   "dependencies": {
     "compression": "^1.7.0",
     "express": "^4.15.4",
+    "moment": "^2.29.1",
     "morgan": "^1.8.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-moment": "^1.0.0",
+    "react-render-html": "^0.6.0",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.1.5"
   },
