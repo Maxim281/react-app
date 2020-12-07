@@ -86,14 +86,13 @@ body{
    color: rgba(255, 255, 255, 0.6);
 }
 
-.articles__link{
+.articles__link li{
    margin-bottom: 20px;
-   color: #fff;
-   font-size: 20px;
-   text-decoration: none;
+   list-style: none;
 }
 
-.articles__link a{
+.articles__link li a{
+   font-size: 20px;
    padding: 10px;
    color: #fff;
    text-decoration: none;

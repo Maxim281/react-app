@@ -1,13 +1,23 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+import './style.css';
 
 class Articles extends Component {
    render() {
       return (
          <div>
             <h2>Статьи</h2>
-            <p className="articles__link"><a href="#1">link 1</a></p>
-            <p className="articles__link"><a href="#2">link 2</a></p>
-            <p className="articles__link"><a href="#3">link 3</a></p>
+            <ul className="articles__link">
+               <li>
+                  <Link exact to="#">Ссылка #1</Link>
+               </li>
+               <li>
+                  <Link to="#">Ссылка #2</Link>
+               </li>
+               <li>
+                  <Link to="#">Ссылка #3</Link>
+               </li>
+            </ul>
          </div>
       );
    }
