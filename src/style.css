@@ -82,7 +82,7 @@ body{
    color: rgba(255, 255, 255, 0.6);
 }
 
-.menu li a:focus{
+.home__menu li a:focus{
    color: rgba(255, 255, 255, 0.6);
 }
 
