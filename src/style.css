@@ -85,3 +85,16 @@ body{
 .menu li a:focus{
    color: rgba(255, 255, 255, 0.6);
 }
+
+.articles__link{
+   margin-bottom: 20px;
+   color: #fff;
+   font-size: 20px;
+   text-decoration: none;
+}
+
+.articles__link a{
+   padding: 10px;
+   color: #fff;
+   text-decoration: none;
+}
