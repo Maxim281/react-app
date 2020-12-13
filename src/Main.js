@@ -1,31 +1,29 @@
 import React, {Component} from 'react';
-import {Route, HashRouter, NavLink } from 'react-router-dom';
+import {Route, HashRouter } from 'react-router-dom';
+import './style.css';
+import Header from './Header';
 import Home from './Home';
 import Articles from './Articles';
+import Article01 from './Article01';
+import Article02 from './Article02';
+import Article03 from './Article03';
 import Tests from './Tests';
 import Game from './Game';
-import './style.css';
 
 class Main extends Component {
    render() {
       return (
          <HashRouter>
             <div>
-               <div className="header">
-                  <div className="_container">
-                     <ul className="menu">
-                        <li><NavLink exact to="/">Главная</NavLink></li>
-                        <li><NavLink exact to="/Articles">Статьи</NavLink></li>
-                        <li><NavLink to="/Tests">Тесты</NavLink></li>
-                        <li><NavLink to="/Game">Игра</NavLink></li>
-                     </ul>
-                  </div>
-               </div>
+               <Header />
                <div className="content _container">
-                  <Route exact path="/" component={Home} />
+                  <Route exact path="/Home" component={Home} />
                   <Route exact path="/Articles" component={Articles} />
-                  <Route path="/Tests" component={Tests} />
-                  <Route path="/Game" component={Game} />
+                  <Route exact path="/Article01" component={Article01} />
+                  <Route exact path="/Article02" component={Article02} />
+                  <Route exact path="/Article03" component={Article03} />
+                  <Route exact path="/Tests" component={Tests} />
+                  <Route exact path="/Game" component={Game} />
                </div>
             </div>
          </HashRouter>
