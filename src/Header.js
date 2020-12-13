@@ -6,7 +6,6 @@ class Header extends Component {
    render() {
       return (
          <HashRouter>
-            <div>
                <div className="header">
                   <div className="_container">
                      <ul className="menu">
@@ -17,7 +16,6 @@ class Header extends Component {
                      </ul>
                   </div>
                </div>
-            </div>
          </HashRouter>
       );
    }
