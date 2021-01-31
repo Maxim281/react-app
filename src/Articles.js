@@ -1,28 +1,53 @@
-import React, {Component} from 'react';
-import { NavLink } from 'react-router-dom';
-import './style.css';
+import React, { Component } from "react";
+import './Articles.css';
 
 class Articles extends Component {
-   render() {
-      return (
-               <div>
-                  <h2>Статьи</h2>
-                     <div className="_container">
-                        <ul className="articles__link">
-                           <li>
-                              <NavLink to="/Article01">Статья #1</NavLink>
-                           </li>
-                           <li>
-                              <NavLink to="/Article02">Статья #2</NavLink>
-                           </li>
-                           <li>
-                              <NavLink to="/Article03">Статья #3</NavLink>
-                           </li>
-                        </ul>
-                     </div>
-               </div>
-      );
-   }
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			urls: [],
+			isLoading: true,
+			isJson: false
+		};
+	}
+
+	sendRequest(url){
+		return fetch(url, { method: "GET", headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', }, }).then((response) => { 
+			const contentType = response.headers.get("content-type"); 
+				if (contentType && contentType.indexOf("application/json") !== -1) {
+					this.setState({ isJson: true });
+					return response.json() 
+				} else { 
+					return response.text() 
+				}
+			});
+	}
+	
+	componentDidMount() {
+		const fetchUrls = async () => {
+			await this.sendRequest('http://wpfolder/wp-json/wp/v2/posts').then(response => {
+				let array = [];
+				if(this.state.isJson && response instanceof Array && response.length > 0){
+					for(var i = 0; i < response.length; i++){
+						var url = [response[i].title.rendered, "/#/ArticlesComponent/" + response[i].id]
+						array.push(url);
+					}
+				}
+				this.setState({ urls: array });
+				this.setState({ isLoading: false });
+			})
+		};
+		fetchUrls();
+	}
+	
+	render() {
+		return (
+			<div className="articles__link">
+				{this.state.urls.length > 0 ? this.state.urls.map((result, i) => ( <a key={i} href={result[1]}>{result[0]}</a> )) : this.state.isLoading ? <p>Загрузка новостей...</p> : <p>Новостей нет.</p>}
+			</div>
+		);
+	}
 }
 
 export default Articles;

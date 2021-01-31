@@ -1,0 +1,23 @@
+.articles__link{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   flex-flow: column-reverse;
+   padding: 20px 0 0;
+}
+
+
+.articles__link a{
+   margin-bottom: 10px;
+   font-size: 18px;
+   padding: 10px;
+   color: #fff;
+   text-decoration: underline;
+}
+
+.articles__link p{
+   font-size: 20px;
+   padding: 20px;
+   color: #fff;
+}
