@@ -20,7 +20,7 @@ class Game extends Component {
       setTimeout(() => {
          if(randomNamber >= 66){
             this.state.lives--;
-            text.innerHTML = "вы выйграли";
+            text.innerHTML = "вы выиграли";
          }
          if(randomNamber >= 33 && randomNamber<= 66){
             text.innerHTML = "+ попытка";
