@@ -1,0 +1,26 @@
+.game p{
+   color: #fff;
+   text-align: center;
+   padding: 0px 0px 20px 0px;
+   font-size: 18px;
+}
+.game__content{
+   width: 710px;
+   height: 710px;
+   margin: 0px auto;
+   background:#fff;
+   padding: 5px;
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   align-items: flex-start;
+}
+.game__item{
+   width: 120px;
+   height: 120px;
+   background: #000;
+   margin: 10px;
+   color: #fff;
+   font-size: 20px;
+   cursor: pointer;
+}

@@ -20,8 +20,8 @@ class Main extends Component {
                      <Route exact path="/Home" component={Home} />
                      <Route exact path="/Articles" component={Articles} />
                      <Route exact path="/ArticlesComponent/:id" component={ArticlesComponent} />
-                     <Route exact path="/Tests" component={Tests} />
                      <Route exact path="/Game" component={Game} />
+                     <Route exact path="/Tests" component={Tests} />
                   </div>
                </div>
             </div>

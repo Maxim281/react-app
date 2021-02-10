@@ -44,7 +44,7 @@ class Articles extends Component {
 	render() {
 		return (
 			<div className="articles__link">
-				{this.state.urls.length > 0 ? this.state.urls.map((result, i) => ( <a key={i} href={result[1]}>{result[0]}</a> )) : this.state.isLoading ? <p>Загрузка новостей...</p> : <p>Новостей нет.</p>}
+				{this.state.urls.length > 0 ? this.state.urls.map((result, i) => ( <a key={i} href={result[1]}>{result[0]}</a> )) : this.state.isLoading ? <p>Загрузка новостей</p> : <p>Новостей нет.</p>}
 			</div>
 		);
 	}

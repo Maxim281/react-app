@@ -43,13 +43,13 @@ class ArticlesComponent extends Component {
 			<div className="article">
 				<div className="article_header">
 					<div className="article_title">
-						{ this.state.title == "" ? <span>Загрузка названия...</span> : <span>{ this.state.title }</span> }
+						{ this.state.title == "" ? <span>Загрузка названия</span> : <span>{ this.state.title }</span> }
 					</div>
 					<div className="article_date">
-						{ this.state.created == "" ? <span>Загрузка даты...</span> : <span className="created">{this.state.created}</span> }
+						{ this.state.created == "" ? <span>Загрузка даты</span> : <span className="created">{this.state.created}</span> }
 					</div>
 				</div>
-				{ this.state.content == "" ? <div className="article_content"><span>Загрузка контента...</span></div> : <div className="article_content" dangerouslySetInnerHTML={{__html: this.state.content}}></div> }
+				{ this.state.content == "" ? <div className="article_content"><span>Загрузка контента</span></div> : <div className="article_content" dangerouslySetInnerHTML={{__html: this.state.content}}></div> }
 				<div className="article_footer">
 					<button onClick={event =>  window.location.href='/#/Articles'}>Вернуться</button>
 				</div>
