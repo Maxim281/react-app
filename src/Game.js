@@ -5,7 +5,7 @@ class Game extends Component {
    constructor(props) {
       super(props);
 		this.state = {
-         lives: 5,
+         lives: 3,
       }
 	}
 
@@ -29,7 +29,7 @@ class Game extends Component {
             this.state.lives--;
             text.innerHTML = "вы проиграли";
          }
-      }, 500);
+      }, 5000);
    }
 
    render() {
