@@ -4,31 +4,38 @@ import './Game.css';
 class Game extends Component {
    constructor(props) {
       super(props);
-		this.state = {
-         lives: 3,
-      }
+		this.numberAttempts = 3
 	}
 
    handleClick = (e) => {
       let text = document.getElementById("text");
+      let attempts = document.getElementById("attempts");
       text.innerHTML = "открывается " + e.target.innerHTML;
       let randomNamber = Math.round((Math.random() * 100));
-      if (this.state.lives === 0){
+      if (this.numberAttempts === 0){
          text.innerHTML = "жизни закончились";
          return false;
       }
+      if(randomNamber >= 66){
+         this.numberAttempts--;
+      }
+      if(randomNamber >= 33 && randomNamber<= 66){
+         this.numberAttempts
+      }
+      if(randomNamber <= 33){
+         this.numberAttempts--;
+      }
       setTimeout(() => {
          if(randomNamber >= 66){
-            this.state.lives--;
-            text.innerHTML = "вы выиграли";
+            text.innerHTML = "Вы получите случайный подарок";
          }
          if(randomNamber >= 33 && randomNamber<= 66){
-            text.innerHTML = "+ попытка";
+            text.innerHTML = "Попробуйте еще раз";
          }
          if(randomNamber <= 33){
-            this.state.lives--;
-            text.innerHTML = "вы проиграли";
+            text.innerHTML = "Ход был не удачен";
          }
+         attempts.innerHTML = "Попытки: " + this.numberAttempts;
       }, 5000);
    }
 
@@ -38,6 +45,7 @@ class Game extends Component {
          <div className="game">
             <h2>Игра</h2>
             <p id="text">выберите</p>
+            <p id="attempts">Попытки: {this.numberAttempts}</p>
             <div className="game__content">
                <button className="game__item" onClick={this.handleClick}>A1</button>
                <button className="game__item" onClick={this.handleClick}>B1</button>
