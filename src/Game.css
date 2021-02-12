@@ -24,3 +24,16 @@
    font-size: 20px;
    cursor: pointer;
 }
+
+.win{
+background: url(img/win.png) !important;
+background-size: contain !important;
+}
+.lose{
+   background: url(img/lose.png) !important;
+   background-size: contain !important;
+}
+.draw{
+   background: url(img/draw.png) !important;
+   background-size: contain !important;
+}
