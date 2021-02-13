@@ -26,14 +26,17 @@
 }
 
 .win{
-background: url(img/win.png) !important;
-background-size: contain !important;
+   background: url(img/win.png) !important;
+   background-size: contain !important;
+   color: transparent;
 }
 .lose{
    background: url(img/lose.png) !important;
    background-size: contain !important;
+   color: transparent;
 }
 .draw{
    background: url(img/draw.png) !important;
    background-size: contain !important;
+   color: transparent;
 }
