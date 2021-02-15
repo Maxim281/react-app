@@ -24,6 +24,9 @@
    font-size: 20px;
    cursor: pointer;
 }
+.game__item:hover{
+   background: #333;
+}
 
 .win{
    background: url(img/win.png) !important;

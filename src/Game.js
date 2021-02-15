@@ -4,36 +4,12 @@ import './Game.css';
 class Game extends Component {
    constructor(props) {
       super(props);
-      this.numberAttempts = 5;
+      this.numberAttempts = 3;
       this.boxClass = [
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
-         "",
+         "","","","","", "","","","","","","","","","","","","","","","","","","",""
       ]; 
       this.state= {
-         boxClass: this.boxClass
+         boxClass: this.boxClass,
       } 
    this.handleClick = this.handleClick.bind(this);
 }
@@ -43,11 +19,14 @@ class Game extends Component {
    handleClick = (e) => {
       let text = document.getElementById("text");
       let attempts = document.getElementById("attempts");
-      text.innerHTML = "открывается " + e.target.innerHTML;
+      text.innerHTML = "Открывается " + e.target.innerHTML;
       let keyId = e.currentTarget.dataset.id;
       let random = Math.round((Math.random() * 100));
+
+      e.target.setAttribute("disabled", "disabled");
+
       if (this.numberAttempts === 0){
-         text.innerHTML = "жизни закончились";
+         text.innerHTML = "Жизни закончились";
          return false;
       }
       if(random >= 66){
@@ -57,6 +36,7 @@ class Game extends Component {
          this.numberAttempts--;
       }
       setTimeout(() => {
+         
          if(random >= 66){
             text.innerHTML = "Вы получите случайный подарок";
             this.boxClass[keyId] = "win";
