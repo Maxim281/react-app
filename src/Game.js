@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import queryString from 'query-string';
 import './Game.css';
 
 class Game extends Component {
    constructor(props) {
       super(props);
+      this.urlClick = 'http://wpfolder/wp-json/myapi/v1/game/Mines/';
       this.numberAttempts = 3;
       this.boxClass = [
          "","","","","", "","","","","","","","","","","","","","","","","","","",""
@@ -17,6 +19,16 @@ class Game extends Component {
    
 
    handleClick = (e) => {
+
+      let feth = fetch(this.urlClick, {
+         method: 'POST',
+         mode: 'no-cors',
+         headers: {'Content-Type':'application/x-www-form-urlencoded'}, // this line is important, if this content-type is not set it wont work
+         body: queryString.stringify({for:'bar', blah:1}) //use the stringify object of the queryString class
+      }).then((responseData) => { console.warn(responseData); return responseData; });
+
+      console.log(feth);
+
       let text = document.getElementById("text");
       let attempts = document.getElementById("attempts");
       text.innerHTML = "Открывается " + e.target.innerHTML;
@@ -24,6 +36,9 @@ class Game extends Component {
       let random = Math.round((Math.random() * 100));
 
       e.target.setAttribute("disabled", "disabled");
+
+      // let btn = document.querySelectorAll("button");
+      
 
       if (this.numberAttempts === 0){
          text.innerHTML = "Жизни закончились";
@@ -36,22 +51,21 @@ class Game extends Component {
          this.numberAttempts--;
       }
       setTimeout(() => {
-         
          if(random >= 66){
-            text.innerHTML = "Вы получите случайный подарок";
+            text.innerHTML = "Вы выиграли!";
             this.boxClass[keyId] = "win";
          }
          else if(random >= 33 && random < 66){
-            text.innerHTML = "Попробуйте еще раз";
+            text.innerHTML = "Вы проиграли.";
             this.boxClass[keyId] = "draw";
          }
          else {
-            text.innerHTML = "Ход был не удачен";
+            text.innerHTML = "Вы проиграли.";
             this.boxClass[keyId] = "lose";
          }
          attempts.innerHTML = "Попытки: " + this.numberAttempts;
          this.setState({boxClass:this.boxClass});
-      }, 5000);
+      });
    }
 
 
