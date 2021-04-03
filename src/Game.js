@@ -16,46 +16,56 @@ class Game extends Component {
    this.handleClick = this.handleClick.bind(this);
 }
 
-   
-
    handleClick = (e) => {
       
       let text = document.getElementById("text");
-      // let attempts = document.getElementById("attempts");
+      let attempts = document.getElementById("attempts");
       text.innerHTML = "Открывается " + e.target.innerHTML;
       // let keyId = e.currentTarget.dataset.id;
       // let random = Math.round((Math.random() * 100));
-
+      let user_id = 1;
+      let number_cell = e.target.dataset.id;
       e.target.setAttribute("disabled", "disabled");
 
       // let btn = document.querySelectorAll("button");
 
       let fetch1 = fetch(this.urlClick, {
          method: 'POST',
-         mode: 'no-cors',
+         // mode: 'no-cors',
          headers: {'Content-Type':'application/x-www-form-urlencoded'},
-         body: queryString.stringify({for:'bar', blah:1})
-      }).then((responseData) => {
-         if (){
-            text.innerHTML = "Жизни закончились";
-            return false;
-         }
-         else if(){
-            text.innerHTML = "Вы выиграли!";
-            this.boxClass[keyId] = "win";
-         }
-         else(){
-            text.innerHTML = "Вы проиграли.";
-            this.boxClass[keyId] = "lose";
-         }
+         body: queryString.stringify({user_id:user_id, cell_number:number_cell})
+      // }).then((responseData) => {
+      }).then(function(response) {
+         return response.json();
+      }).then(function (data) {
+      if (data.type_prize == 1){
+         text.innerHTML = data.message;
+         this.boxClass[e.target.dataset.id] = "draw";
+      }
+      else if(data.type_prize == 2){
+         text.innerHTML = data.message;
+         this.boxClass[e.target.dataset.id] = "win";
+      }
+      else{
+         text.innerHTML = data.message;
+         this.boxClass[e.target.dataset.id] = "lose";
+      }
+      if (this.numberAttempts === 0) {
+         text.innerHTML = "Ваши попытки закончились!";
+         return false;
+      }
+      else {
          attempts.innerHTML = "Попытки: " + this.numberAttempts;
          this.setState({boxClass:this.boxClass});
-            console.warn(responseData); 
-            return responseData;
+      }
 
-         });
+         // console.warn(responseData); 
+         // return responseData;
+      this.setState({boxClass:this.boxClass});
+      console.log('data', data);
+      });
 
-      console.log(fetch1);
+   console.log(fetch1);
 
       
    }
