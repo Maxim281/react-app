@@ -37,7 +37,7 @@ class Game extends Component {
       // }).then((responseData) => {
       }).then(function(response) {
          return response.json();
-      }).then(function (data) {
+      }).then((data) => {
       if (data.type_prize == 1){
          text.innerHTML = data.message;
          this.boxClass[e.target.dataset.id] = "draw";
@@ -61,9 +61,9 @@ class Game extends Component {
 
          // console.warn(responseData); 
          // return responseData;
-      this.setState({boxClass:this.boxClass});
-      console.log('data', data);
-      });
+      // this.setState({boxClass:this.boxClass});
+      // console.log('data', data);
+      })
 
    console.log(fetch1);
 
@@ -75,10 +75,10 @@ class Game extends Component {
       return (
          <div className="game">
             <h2>Игра</h2>
-            <p id="text">выберите</p>
+            <p id="text">Выберите ячейку</p>
             <p id="attempts">Попытки: {this.numberAttempts}</p>
             <div className="game__content">
-               <div><button data-id="0" className={"game__item " + this.boxClass[0]} onClick={this.handleClick}>B1</button></div>
+               <div><button data-id="0" className={"game__item " + this.boxClass[0]} onClick={this.handleClick}>A1</button></div>
                <div><button data-id="1" className={"game__item " + this.boxClass[1]} onClick={this.handleClick}>B1</button></div>
                <div><button data-id="2" className={"game__item " + this.boxClass[2]} onClick={this.handleClick}>C1</button></div>
                <div><button data-id="3" className={"game__item " + this.boxClass[3]} onClick={this.handleClick}>D1</button></div>
