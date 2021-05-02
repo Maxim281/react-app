@@ -29,6 +29,7 @@
     "reactsample"
   ],
   "dependencies": {
+    "@vkontakte/vk-bridge": "^2.4.1",
     "compression": "^1.7.0",
     "cors": "^2.8.5",
     "express": "^4.15.4",
