@@ -26,11 +26,11 @@ class Articles extends Component {
 	
 	componentDidMount() {
 		const fetchUrls = async () => {
-			await this.sendRequest('http://wpfolder/wp-json/wp/v2/posts').then(response => {
+			await this.sendRequest(window.location.origin + "/wp-json/wp/v2/posts").then(response => {
 				let array = [];
 				if(this.state.isJson && response instanceof Array && response.length > 0){
 					for(var i = 0; i < response.length; i++){
-						var url = [response[i].title.rendered, "/#/ArticlesComponent/" + response[i].id]
+						var url = [response[i].title.rendered, "#/ArticlesComponent/" + response[i].id]
 						array.push(url);
 					}
 				}

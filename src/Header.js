@@ -11,7 +11,7 @@ class Header extends Component {
                      <ul className="menu">
                         <li><NavLink exact to="/Home">Главная</NavLink></li>
                         <li><NavLink exact to="/Articles">Статьи</NavLink></li>
-                        <li><NavLink to="/Game">Игра</NavLink></li>
+                        <li><NavLink to="/game">Игра</NavLink></li>
                         <li><NavLink to="/Tests">Тесты</NavLink></li>
                      </ul>
                   </div>

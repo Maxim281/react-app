@@ -5,7 +5,8 @@ import './Game.css';
 class Game extends Component {
    constructor(props) {
       super(props);
-      this.urlClick = 'http://wpfolder/wp-json/myapi/v1/game/Mines/';
+      this.urlClick = window.location.origin + "/wp-json/myapi/v1/game/Mines/";
+      // this.urlClick = 'http://wpfolder/wp-json/myapi/v1/game/Mines/';
       this.numberAttempts = 3;
       this.boxClass = [
          "","","","","", "","","","","","","","","","","","","","","","","","","",""
@@ -25,7 +26,8 @@ class Game extends Component {
       let user_id = localStorage.getItem('user');
       let number_cell = e.currentTarget.dataset.id;
       e.currentTarget.setAttribute("disabled", "disabled");
-
+      // console.log(templateUrl);
+      
       fetch(this.urlClick, {
          method: 'POST',
          headers: {'Content-Type':'application/x-www-form-urlencoded'},
@@ -33,36 +35,38 @@ class Game extends Component {
       }).then(function(response) {
          return response.json();
       }).then((data) => {
-
-      if (data.type_prize === 1){
-         text.innerHTML = data.message;
-         this.boxClass[keyId] = "draw";
-      }
-      else if(data.type_prize === 2){
-         text.innerHTML = data.message;
-         this.boxClass[keyId] = "win";
-         this.numberAttempts--;
-      }
-      else if (data.type_prize === 3) {
-         text.innerHTML = data.message;
-         this.boxClass[keyId] = "lose";
-         this.numberAttempts--;
-         return false;
-      }
-      else {
-         window.location.href = 'http://localhost:3000/#/Articles';
-      }
-      
-      if(this.numberAttempts === 0) {
-         text.innerHTML = "Ваши попытки закончились!";
-         return false;
-      }
-      
-      attempts.innerHTML = "Попытки: " + this.numberAttempts;
-      this.setState({boxClass:this.boxClass});
+         
+         if (data.type_prize === 1){
+            text.innerHTML = data.message;
+            this.boxClass[keyId] = "draw";
+         }
+         else if(data.type_prize === 2){
+            text.innerHTML = data.message;
+            this.boxClass[keyId] = "win";
+            this.numberAttempts--;
+         }
+         else if (data.type_prize === 3) {
+            text.innerHTML = data.message;
+            this.boxClass[keyId] = "lose";
+            this.numberAttempts--;
+            return false;
+         }
+         else {
+            window.location.href = '#/Articles';
+         }
+         
+         if(this.numberAttempts === 0) {
+            text.innerHTML = "Ваши попытки закончились!";
+            return false;
+         }
+         
+         attempts.innerHTML = "Попытки: " + this.numberAttempts;
+         this.setState({boxClass:this.boxClass});
       });
-
-   console.log(number_cell);
+      
+      console.log(number_cell);
+      console.log(user_id);
+      console.log(localStorage)
       
    }
 

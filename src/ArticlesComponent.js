@@ -28,7 +28,7 @@ class ArticlesComponent extends Component {
 	componentDidMount() {
 		var id = this.props.match.params.id;
 		const fetchUrls = async () => {
-			await this.sendRequest('http://wpfolder/wp-json/wp/v2/posts/' + id).then(response => {
+			await this.sendRequest(window.location.origin + "/wp-json/wp/v2/posts/" + id).then(response => {
 				if(this.state.isJson){
 					this.setState({ created: response.date });
 					this.setState({ title: response.title.rendered });
